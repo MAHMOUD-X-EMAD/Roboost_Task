@@ -1,0 +1,228 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<style>
+   
+@import url(//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css);
+@import url(http://fonts.googleapis.com/css?family=Titillium+Web&subset=latin,latin-ext);
+</style>
+<section class="text-center text-lg-start">
+    <div class="container ">
+      <div class="row g-0 align-items-center">
+        <div class="col-lg-12 mb-5 mb-lg-0  align-items-center  ">
+          <div class="card cascading-right" style="
+                    background: hsla(0, 0%, 100%, 0.55);
+                    backdrop-filter: blur(30px);
+                    ">
+            <div class="card-body p-5 shadow-5 text-center">
+              <h2 class="fw-bold mb-5" style="font-size: xx-large; color: #0f62c6;">تعديل بيانات طالب</h2>
+              <form [formGroup]="UpdateForm" (ngSubmit)="onSubmit(UpdateForm)">
+                  <div class="row">
+                    <div class="col-md-6 my-4 ">
+                      <div class="form-outline">
+                        <div class="input-group">
+    
+                          <input type="text" id="FirstName" [value]="CurrentStudent?.Name" style="direction: rtl;" formControlName="FirstName"
+                            class="form-control text-center" placeholder="أدخل اسم الطالب " />
+                          <label for="FirstName" class="input-group-text fa-lg">اسم الطالب الاول &nbsp;
+                            <i class="fa-solid fa-circle-user" style="color:#163A66;"></i>
+                          </label>
+    
+                        </div>
+    
+                        <div *ngIf="FirstName?.errors != null && FirstName?.touched" class="error-messages">
+                          <p *ngIf="FirstName?.errors?.['required']" class="text-danger">
+                            ادخل اسم الطالب
+                          </p>
+                          
+                        </div>
+                      </div>
+    
+    
+                    </div>
+    
+                    <div class="col-md-6 my-4">
+                      <div class="form-outline">
+                        <div class="input-group">
+                          <input type="text" id="LastName" formControlName="LastName" style="direction: rtl; "
+                            class="form-control text-center" placeholder="أدخل اسم الاب" />
+                          <label for="LastName" class="input-group-text">اسم الاب &nbsp;
+                            <i class="fa-solid fa-user" style="color:#163A66;"></i>
+                          </label>
+                        </div>
+    
+    
+                        <div *ngIf="LastName?.errors != null && LastName?.touched">
+                          <p *ngIf="LastName?.errors?.['required']" class="text-danger">
+                            ادخل اسم الاب
+                          </p>
+                          
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="row">
+                      <div class="form-outline mb-5">
+                        <div class="input-group">
+                          <input type="text" id="NameArabic" name="Mobile" formControlName="NameArabic" style="direction: rtl;
+                            " class="form-control text-center" placeholder="ادخل الاسم عربي"
+                            (input)="NameArabic?.markAsTouched()" />
+                            
+                          <label for="NameArabic" class="input-group-text">الاسم عربي &nbsp;
+                        </label>
+                        </div>
+    
+                        <div *ngIf="NameArabic?.touched && NameArabic?.invalid">
+                          <p *ngIf="NameArabic?.errors?.['required']" class="text-danger">
+                             برجاء ادخال الاسم باللغة العربيه 
+                          </p>
+                         
+                        </div>
+                      </div>
+                    </div>
+  
+                    <div class="row">
+                      <div class="form-outline mb-5">
+                        <div class="input-group">
+                          <input type="text" id="NameEnglish" name="NameEnglish" formControlName="NameEnglish" style="direction: rtl;
+                            " class="form-control text-center" placeholder="ادخل الاسم باللغة الانجليزية"
+                            (input)="NameEnglish?.markAsTouched()" />
+                            
+                          <label for="NameEnglish" class="input-group-text">الاسم انجليزي &nbsp;
+                        </label>
+                        </div>
+    
+                        <div *ngIf="NameEnglish?.touched && NameEnglish?.invalid">
+                          <p *ngIf="NameEnglish?.errors?.['required']" class="text-danger">
+                              برجاء ادخال الاسم باللغة الانجليزية 
+                          </p>
+                         
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="form-outline mb-5">
+                        <div class="input-group">
+                          <input type="text" id="ID" [value]="CurrentStudent?.ID"  name="ID" formControlName="ID" style="direction: rtl;
+                            " class="form-control text-center" placeholder="ادخل الرقم التعريفي للطالب"
+                            (input)="ID?.markAsTouched()" />
+                            
+                          <label for="ID" class="input-group-text">رقم الطالب التعريفي &nbsp;
+                        </label>
+                        </div>
+    
+                        <div *ngIf="ID?.touched && ID?.invalid">
+                            <p *ngIf="ID?.errors?.['required']" class="text-danger">
+                                برجاء ادخال الرقم التعريفي
+                            </p>
+                            
+                        </div>
+                      </div>
+                    </div>
+              
+  
+  
+                <div class="row">
+                  <div class="form-outline mb-5">
+                    <div class="input-group">
+                      <input type="text" id="Mobile" [value]="CurrentStudent?.Mobile"  name="Mobile" formControlName="Mobile" style="direction: rtl;
+                        " class="form-control text-center" placeholder="ادخل رقم التليفون"
+                        (input)="Mobile?.markAsTouched()" />
+                        
+                      <label for="Mobile" class="input-group-text">رقم التليفون &nbsp;
+                    </label>
+                    </div>
+
+                    <div *ngIf="Mobile?.touched && Mobile?.invalid">
+                      <p *ngIf="Mobile?.errors?.['required']" class="text-danger">
+                        برجاء ادخال رقم التليفون
+                      </p>
+                     
+                    </div>
+                  </div>
+                </div>
+
+             
+                <div class="row">
+                  <div class="form-outline mb-5">
+                    <div class="input-group">
+                      <input type="email" id="Email" name="Email" [value]="CurrentStudent?.Email"  formControlName="Email" style="direction: rtl;
+                        " class="form-control text-center" placeholder=" البريد الالكتروني"
+                        (input)="Email?.markAsTouched()" />
+                        
+                      <label for="Email" class="input-group-text">البريد الالكتروني &nbsp;
+                    </label>
+                    </div>
+
+                    <div *ngIf="Email?.touched && Email?.invalid">
+                      <p *ngIf="Email?.errors?.['required']" class="text-danger">
+                            ادخل البريد الالكتروني للطالب
+                    </p>
+                     
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="row">
+                  <div class="form-outline mb-5">
+                    <div class="input-group">
+                      <input type="text" id="NationalID" [value]="CurrentStudent?.NationalID"  name="NationalID" formControlName="NationalID" style="direction: rtl;
+                        " class="form-control text-center" placeholder="ادخل رقم البطافة"
+                        (input)="NationalID?.markAsTouched()" />
+                        
+                      <label for="NationalID" class="input-group-text"> رقم البطافة &nbsp;
+                    </label>
+                    </div>
+
+                    <div *ngIf="NationalID?.touched && NationalID?.invalid">
+                      <p *ngIf="NationalID?.errors?.['required']" class="text-danger">
+                        ادخل رقم البطافة القومي
+                      </p>
+                     
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="row">
+                  <div class="form-outline mb-5">
+                    <div class="input-group">
+                      <input type="text" id="Age" name="Age" [value]="CurrentStudent?.Age"  formControlName="Age" style="direction: rtl;
+                        " class="form-control text-center" placeholder="عمر الطالب"
+                        (input)="Age?.markAsTouched()" />
+                        
+                      <label for="Age" class="input-group-text">عمر الطالب &nbsp;
+                    </label>
+                    </div>
+
+                    <div *ngIf="Age?.touched && Age?.invalid">
+                      <p *ngIf="Age?.errors?.['required']" class="text-danger">
+                        ادخل عمر الطالب
+                      </p>
+                     
+                    </div>
+                  </div>
+                </div>
+  
+                <div>
+                  <button type="submit" id="updateBtn" class="btn btn-success btn-block mb-4 mt-4"
+                    [disabled]="UpdateForm.invalid">
+                    تعديل
+                  </button>
+  
+                </div>
+                
+  
+              </form>
+            </div>
+          </div>
+        </div>
+  
+  
+      </div>
+    </div>
+  
+  </section>

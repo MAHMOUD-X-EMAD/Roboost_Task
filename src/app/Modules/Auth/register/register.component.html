@@ -1,0 +1,123 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<style>
+    /*
+    @hiercelik - hiercelik.net
+    @koalapix - koalapix.com
+*/
+@import url(//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css);
+@import url(http://fonts.googleapis.com/css?family=Titillium+Web&subset=latin,latin-ext);
+</style>
+<section class="text-center text-lg-start">
+    <div class="container py-4 ">
+      <div class="row g-0 align-items-center">
+        <div class="col-lg-12 mb-5 mb-lg-0  align-items-center  ">
+          <div class="card cascading-right" style="
+                    background: hsla(0, 0%, 100%, 0.55);
+                    backdrop-filter: blur(30px);
+                    ">
+            <div class="card-body p-5 shadow-5 text-center">
+              <h2 class="fw-bold mb-5" style="font-size: xx-large; color: #0f62c6;">اضافة مستخدم</h2>
+              <form [formGroup]="RegisterForm" (ngSubmit)="onSubmit(RegisterForm)">
+                <div class="row">
+                  <div class="col-md-6 my-4 ">
+                    <div class="form-outline">
+                      <div class="input-group">
+  
+                        <input type="text" id="userName" style="direction: rtl;" formControlName="userName"
+                          class="form-control text-center" placeholder="أدخل اسم المستخدم مثلا Abc0" />
+                        <label for="userName" class="input-group-text fa-lg">اسم المستخدم &nbsp;
+                          <i class="fa-solid fa-circle-user" style="color:#163A66;"></i>
+                        </label>
+  
+                      </div>
+  
+                      <div *ngIf="userName?.errors != null && userName?.touched" class="error-messages">
+                        <p *ngIf="userName?.errors?.['required']" class="text-danger">
+                          ادخل اسم المستخدم
+                        </p>
+                        <p class="text-danger" *ngIf="userName?.errors?.['minlength']">
+                          أدخل اسم المستخدم بحد أقل 5 أحرف.
+                        </p>
+                      </div>
+                    </div>
+  
+  
+                  </div>
+  
+                  <div class="col-md-6 my-4">
+                    <div class="form-outline">
+                      <div class="input-group">
+                        <input type="text" id="name" formControlName="name" style="direction: rtl; "
+                          class="form-control text-center" placeholder="أدخل الأسم  " />
+                        <label for="name" class="input-group-text">الاسم  &nbsp;
+                          <i class="fa-solid fa-user" style="color:#163A66;"></i>
+                        </label>
+                      </div>
+  
+  
+                      <div *ngIf="name?.errors != null && name?.touched">
+                        <p *ngIf="name?.errors?.['required']" class="text-danger">
+                          ادخل اسمك كاملا
+                        </p>
+                        <p class="text-danger" *ngIf="name?.errors?.['minlength']">
+                          أدخل اسمك بحد أقل 3 أحرف.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              
+  
+  
+                <div class="row">
+                  <div class="form-outline mb-5">
+                    <div class="input-group">
+                      <input type="password" id="pass" name="password" formControlName="password" style="direction: rtl;
+                        " class="form-control text-center" placeholder=" ادخل كلمه السر"
+                        (input)="password?.markAsTouched()" />
+                        <span class="input-group-text">
+                            <span class=" fa fa-eye" id="eye" type="checkbox" (click)="show()"> </span>
+                        </span>
+                      <label for="pass" class="input-group-text">كلمه السر &nbsp;
+                    </label>
+                    </div>
+                    <div *ngIf="password?.touched && password?.invalid">
+                      <p *ngIf="password?.errors?.['required']" class="text-danger">
+                        برجاء ادخال كلمه السر
+                      </p>
+                      <p *ngIf="password?.errors?.['strong'] && password?.dirty" class="text-danger">
+                        كلمة المرور غير قوية، يجب أن تحتوي على رقم واحد على الأقل،
+                        حروف
+                      </p>
+                    </div>
+                  </div>
+                </div>
+  
+  
+                <div class="my-5">
+                  <div *ngIf="error" class="alert alert-danger m-2">
+                    {{error}}
+                  </div>
+                </div>
+                <div>
+                  <button type="submit" id="loginBtn" class="btn btn-success btn-block mb-4 mt-4"
+                    [disabled]="RegisterForm.invalid">
+                    تسجيل
+                  </button>
+  
+                </div>
+                <a routerLink="/auth/Login" class="btn btn-dark">لدي حساب</a>
+  
+              </form>
+            </div>
+          </div>
+        </div>
+  
+  
+      </div>
+    </div>
+  
+  </section>
