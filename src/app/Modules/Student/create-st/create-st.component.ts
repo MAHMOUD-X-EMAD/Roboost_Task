@@ -61,10 +61,8 @@ export class CreateStComponent {
 
   onSubmit(CreateForm: any) {
      
-     
-    if (this.CreateForm.valid) {
-  
  
+    
     this.studentAdd.Mobile = CreateForm.get("Mobile").value
     this.studentAdd.Age = CreateForm.get("Age").value
     this.studentAdd.NationalID = CreateForm.get("NationalID").value
@@ -83,15 +81,5 @@ export class CreateStComponent {
            error : err => console.log(err)
 
         }
-        
-      
-
-    )
-
-
-       } else {
-    alert('بيناتك غير صحيحه !')
-  
-  }
-}
+    )} 
 }

@@ -83,10 +83,6 @@ export class UpdateStComponent {
 
   onSubmit(UpdateForm: any) {
      
-     
-    if (UpdateForm.valid) {
-  
-    
     this.studentUpdate.ID = UpdateForm.get("ID").value
     this.studentUpdate.NameArabic = UpdateForm.get("NameArabic").value
     this.studentUpdate.NameEnglish = UpdateForm.get("NameEnglish").value
@@ -116,9 +112,5 @@ export class UpdateStComponent {
     )
 
 
-       } else {
-    alert('بيناتك غير صحيحه !')
-  
-  }
-}
+       } 
 }
